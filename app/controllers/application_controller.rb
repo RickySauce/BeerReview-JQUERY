@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :current_user
 
   def home
-    render '/home'
+    render '/home', :layout => false
   end
 
   private
