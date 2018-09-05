@@ -1,2 +1,17 @@
-<%=form_for @user do |f| %>
+<b><h2>New User</h2></b>
+
+<%= form_for @user do |f| %>
+<b> Username: </b>
+<%= f.text_field :username %>
+<br><br>
+<b> Email Address: </b>
+<%= f.email_field :email %>
+<br><br>
+<b> Password: </b>
+<%= f.password_field :password %>
+<br><br>
+<b> Password Confirmation: </b>
+<%= f.password_field :password_confirmation %>
+<br><br>
+<%= f.submit 'Create User'%>
 <%end%>
