@@ -1,1 +1,23 @@
-WELCOME FOO'S 
+<h1>WELCOME TO BEER REVIEW</h1>
+
+<div class="topnav">
+  <%if logged_in?%>
+  <a href="/users/<%=current_user.id%>">User Home</a>
+  <a href="/logout">Log Out</a>
+  <%else%>
+  <a href="/users/new">Sign Up</a>
+  <a href="/login">Log In</a>
+  <%end%>
+</div>
+
+<div class="">
+
+</div>
+
+<div class="">
+
+</div>
+
+<div class="">
+
+</div>
