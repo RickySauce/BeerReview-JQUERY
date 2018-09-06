@@ -2,9 +2,6 @@
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
-function user(user){
-  debugger
-}
 
 function newUser(){
   $('#new_user').submit(function(event){
@@ -18,7 +15,7 @@ function newUser(){
           $(`#user_${error}`).after(`ERROR(S): ${errors[error].join(', ')}`)
           }
         } else {
-
+        $('#new_user_display').load(`/users/${data["id"]} #profile`)
         }
       });
     });

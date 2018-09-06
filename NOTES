@@ -35,3 +35,6 @@ RELATIONS:
     REVIEWS: belongs to a user | belongs to a beer
     BREWERIES: has-many beers | has-many reviews through beers | has-many users through reviews
 ---------------------------------------------------------------------
+
+  render :layout => false, returns JSON?
+  how to require handlebars?
