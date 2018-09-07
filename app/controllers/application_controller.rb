@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :current_user
 
   def home
+    binding.pry
     render '/home', :layout => false
   end
 

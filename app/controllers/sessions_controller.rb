@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :already_logged_in, only: [:new, :create]
 
   def new
   end
@@ -21,6 +22,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    session.delete(:user_id)
+    flash[:message] = "Successfully Logged out!"
+    redirect_to root_path
   end
 
 end
