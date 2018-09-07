@@ -15,6 +15,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user = current_user
     @review.beer_id = params["beer_id"]
+    @review.rating=(@review.rating)
     if @review.save
       redirect_to user_review_path(current_user, @review)
     else

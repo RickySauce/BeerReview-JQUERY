@@ -34,7 +34,9 @@ function beerOptions(element){
 }
 
 function review(element){
-  $.get(`/users/beers/${element.dataset.id}`).error(error => {
+  $.get(`/users/beers/${element.dataset.id}`).done(data => {
+    alert('UHSUHHHHHHHH')
+  }).error(error => {
       alert('suh')
   });
 };
