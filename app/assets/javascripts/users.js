@@ -8,7 +8,7 @@ function newUser(){
       $('span').text("")
       event.preventDefault();
       const formData = $(this).serialize();
-      posting = $.post('/users', formData);
+      const posting = $.post('/users', formData);
       posting.done(data => {
       const errors = data["errors"]
       if (errors){

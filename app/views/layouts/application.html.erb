@@ -9,6 +9,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <div class="topnav">
+      <a href="/">Home Page</a>
       <%if logged_in?%>
       <a href="/users/<%=current_user.id%>">User Home</a>
       <a href="/logout">Log Out</a>
