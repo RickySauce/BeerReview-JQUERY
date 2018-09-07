@@ -12,7 +12,6 @@ function logIn(){
       $('p')[0] ? $('p')[0].innerHTML = data["errors"] : $('h2').after(`<p>${data["errors"]}</p><br>`);
       $('#login_username').val(data["user"]);
     } else {
-      userId = data["id"]
       $('#log_in').load(`/users/${data["id"]} #profile`)
     }
     });

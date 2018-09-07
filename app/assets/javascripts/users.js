@@ -2,9 +2,6 @@
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
-// $('input').last()[0].disabled = false
-let userId = null
-
 function newUser(){
   $('#new_user').submit(function(event){
       $('span').text("")
@@ -18,7 +15,6 @@ function newUser(){
           $(`#${error}_errors`).text(`ERROR(S): ${errors[error].join(', ')}`);
         };
         } else {
-          userId = data["id"]
         $('#new_user_display').load(`/users/${data["id"]} #profile`)
         }
       });
