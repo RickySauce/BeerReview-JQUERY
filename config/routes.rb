@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   resources :users do
-    resources :reviews
+    resources :reviews, except: [:new, :create]
     resources :beers, only: [:show, :index]
   end
   resources :beers, only: [:show, :index] do
-    resources :review, only: [:show, :index]
+    resources :reviews, except: [:destroy, :update]
   end
   resources :breweries, only: [:show, :index] do
     resources :beers, only: [:show, :index]

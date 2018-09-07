@@ -1,0 +1,22 @@
+<h2>Write Review</h2>
+  <div id="review_form" class="">
+    <h4><%=@beer.name%></h4>
+    <%= form_for [@beer, @review] do |f| %>
+    <b>Taste:</b>
+    <%=f.number_field :taste, step: 0.1%>
+    <br><br>
+    <b>Look:</b>
+    <%=f.number_field :look, step: 0.1%>
+    <br><br>
+    <b>Smell:</b>
+    <%=f.number_field :smell, step: 0.1%>
+    <br><br>
+    <b>Feel:</b>
+    <%=f.number_field :feel, step: 0.1%>
+    <br><br>
+    <br><br>
+    <b>Post:</b><br>
+    <%=f.text_area :content, size: "100x20" %>
+    <%=f.submit 'Submit Review'%>
+    <%end%>
+  </div>
