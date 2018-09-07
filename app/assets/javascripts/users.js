@@ -22,7 +22,3 @@ function newUser(){
     });
     $('input').last()[0].removeAttribute('data-disable-with');
 }
-
-$(document).ready(function() {
-  newUser();
-});

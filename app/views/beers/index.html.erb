@@ -1,0 +1,15 @@
+<h3>Beer List</h3>
+
+<div id="beer_list">
+  <ul>
+    <%@beers.each do |beer|%>
+      <li data-abv="<%=beer.abv%>" data-brewery="<%=beer.brewery.name%>" id="beer-<%=beer.id%>"><a href="<%beer_path(beer)%>"><%=beer.name%></a></li>
+    <%end%>
+  </ul>
+  <button type="button" name="button" onclick="next25()">Show More</button>
+  <button type="button" name="button" onclick="showAll()">Show All</button>
+</div>
+
+<script type="text/javascript">
+  hideBeers()
+</script>
