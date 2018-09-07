@@ -8,4 +8,8 @@ class Review < ApplicationRecord
     @rating.round(2)
   end
 
+  def self.find_review(user_id, beer_id)
+    Review.where("user_id = ? and beer_id = ?", user_id, beer_id)
+  end
+
 end
