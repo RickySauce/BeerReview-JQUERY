@@ -2,16 +2,16 @@
 <b><h2>New User</h2></b>
   <%= form_for @user do |f| %>
   <b> Username: </b>
-  <%= f.text_field :username %>
+  <%= f.text_field :username %> <span id="username_errors"></span>
   <br><br>
   <b> Email Address: </b>
-  <%= f.email_field :email %>
+  <%= f.email_field :email %> <span id="email_errors"></span>
   <br><br>
   <b> Password: </b>
-  <%= f.password_field :password %>
+  <%= f.password_field :password %> <span id="password_errors"></span>
   <br><br>
   <b> Password Confirmation: </b>
-  <%= f.password_field :password_confirmation %>
+  <%= f.password_field :password_confirmation %> <span id="password_confirmation_errors"></span>
   <br><br>
   <%= f.submit 'Create User'%>
   <%end%>

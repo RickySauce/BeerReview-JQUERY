@@ -1,0 +1,12 @@
+<div id="log_in">
+<b><h2>Log In</h2></b>
+  <%= form_for 'login' do |f| %>
+  <b> Username: </b>
+  <%= f.text_field :username %>
+  <br><br>
+  <b> Password: </b>
+  <%= f.password_field :password %>
+  <br><br>
+  <%= f.submit 'Log In'%>
+  <%end%>
+</div>
