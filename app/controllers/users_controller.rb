@@ -18,6 +18,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def review_exists
+    @review = Review.find_review(current_user.id, @beer.id)
+    respond_to do |format|
+      format.html {redirect_to root_path}
+      format.json {render json: @review, status: 200}
+    end
+  end
+
 
 private
 

@@ -38,3 +38,14 @@ RELATIONS:
 
   render :layout => false, returns JSON?
   how to require handlebars?
+
+
+users/beers/:beer_id, to users#review_exists, as review?_path
+
+format_do json |
+  if Review.find_review(current_user.id, beer_params.id).blank?
+    status: 200
+    else
+    status: 500
+html
+redirect_to /

@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+  get '/users/beers/:id', to: 'users#review_exists', as: 'review_exists'
   resources :users do
     resources :reviews, except: [:new, :create]
-    resources :beers, only: [:show, :index]
+    resources :beers, only: [:index]
   end
   resources :beers, only: [:show, :index] do
     resources :reviews, except: [:destroy, :update]
