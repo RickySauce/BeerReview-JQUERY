@@ -3,7 +3,6 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 let beerIds = 25
 
-
 function hideBeers(){
   $('li').slice(25).each(function(index,value){
     $(value).hide()
@@ -18,4 +17,20 @@ function next25(){
 
 function showAll(){
   $('li').show()
+}
+
+function beerOptions(element){
+  $('#options').remove()
+  $(element).append(`
+    <div id="options">
+      <button type="button" name="button" id="review">Review</button>
+      <button type="button" name="button">Go to profile</button>
+      <button type="button" name="button">Go to brewery profile</button>
+    </div>
+    `)
+    $('#review').click(() => review(element))
+}
+
+function review(element){
+  console.log(element)
 }

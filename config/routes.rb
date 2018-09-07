@@ -5,11 +5,12 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   resources :users do
     resources :reviews
+    resources :beers, only: [:show, :index]
   end
   resources :beers, only: [:show, :index] do
     resources :review, only: [:show, :index]
   end
   resources :breweries, only: [:show, :index] do
     resources :beers, only: [:show, :index]
-  end 
+  end
 end
