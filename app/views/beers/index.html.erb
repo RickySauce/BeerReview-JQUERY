@@ -3,13 +3,14 @@
 <div id="beer_list">
   <ul>
     <%@beers.each do |beer|%>
-      <li data-abv="<%=beer.abv%>" data-brewery_id="<%=beer.brewery.id%>" id="beer-<%=beer.id%>"><a href="<%beer_path(beer)%>"><%=beer.name%></a></li>
+      <li data-id="<%=beer.id%>"data-abv="<%=beer.abv%>" data-brewery_id="<%=beer.brewery.id%>" id="beer-<%=beer.id%>"><a href="<%beer_path(beer)%>"><%=beer.name%></a></li>
     <%end%>
   </ul>
   <button type="button" name="button" onclick="next25()">Show More</button>
   <button type="button" name="button" onclick="showAll()">Show All</button>
 </div>
 
+<span data-user_id="<%=current_user.id%>"></span>
 
 <script type="text/javascript">
   hideBeers()

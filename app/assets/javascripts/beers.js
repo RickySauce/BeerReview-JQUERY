@@ -2,6 +2,7 @@
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 let beerId = 25
+let userId = null
 
 function hideBeers(){
   $('li').slice(25).each(function(index,value){
@@ -20,6 +21,7 @@ function showAll(){
 }
 
 function beerOptions(element){
+  userId = $('[data-user_id]').data("user_id")
   $('#options').remove()
   $(element).append(`
     <div id="options">
@@ -32,5 +34,7 @@ function beerOptions(element){
 }
 
 function review(element){
-  console.log(element)
-}
+  $.get(`/users/${userId}/beer/${element.dataset.id}`).error(error => {
+      alert('suh')
+  });
+};
