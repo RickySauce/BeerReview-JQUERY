@@ -18,12 +18,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def review_exists
-    @review = Review.find_review(current_user.id, params["id"])
-    respond_to do |format|
-      format.html {redirect_to root_path}
-      format.json {render json: @review, status: 200} unless @review.blank?
+    def review_exists
+    @review = Review.find_review(current_user.id, params["id"]).first
+    if @review.blank?
+      render status: 403
+    else
+      render json: @review, status: 200
     end
+    # respond_to do |format|
+    #   format.html {redirect_to root_path}
+    # end
   end
 
 
