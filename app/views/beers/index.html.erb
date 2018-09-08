@@ -1,14 +1,22 @@
 <h3>Beer List</h3>
 
-<div id="beer_list">
-  <ul>
-    <%@beers.each do |beer|%>
-      <li data-id="<%=beer.id%>"data-abv="<%=beer.abv%>" data-brewery_id="<%=beer.brewery.id%>" id="beer-<%=beer.id%>"><a href="<%beer_path(beer)%>"><%=beer.name%></a></li>
-    <%end%>
-  </ul>
-  <button type="button" name="button" onclick="next25()">Show More</button>
-  <button type="button" name="button" onclick="showAll()">Show All</button>
+<div class="">
+
+  <div id="beer_list" style="float: left; width: 300px; height:400px;">
+    <ul>
+      <%@beers.each do |beer|%>
+        <li data-id="<%=beer.id%>"data-abv="<%=beer.abv%>" data-brewery_id="<%=beer.brewery.id%>" id="beer-<%=beer.id%>"><a href="<%beer_path(beer)%>"><%=beer.name%></a></li>
+      <%end%>
+    </ul>
+    <button type="button" name="button" onclick="next25()">Show More</button>
+    <button type="button" name="button" onclick="showAll()">Show All</button>
+  </div>
+
+  <div id="beer_misc" style="float: left; width: 300px; height:400px;">
+
+  </div>
 </div>
+
 
 <span data-user_id="<%=current_user.id if logged_in?%>"></span>
 

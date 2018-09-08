@@ -1,7 +1,7 @@
 // # Place all the behaviors and hooks related to the matching controller here.
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
-let beerId = 25
+let beerIds = 25
 let userId = null
 
 function hideBeers(){
@@ -11,7 +11,7 @@ function hideBeers(){
 }
 
 function next25(){
-  $('li').slice(beerId, beerId += 25).each(function(index,value){
+  $('li').slice(beerIds, beerIds += 25).each(function(index,value){
     $(value).show()
   })
 }
@@ -34,11 +34,17 @@ function beerOptions(element){
 }
 
 function review(element){
-  $.get(`/users/beers/${element.dataset.id}`).done(data => {
-    console.log(element)
-    console.log(data)
+  let beerId = element.dataset.id
+  $.get(`/users/beers/${beerId}`).done(data => {
+    $('#review').replaceWith(`
+      <div class="">
+        <span>Taste: ${data["taste"]} </span>Smell: ${data["smell"]} <span>Look: ${data["look"]} </span>
+        <span>Feel: ${data["feel"]} </span> <span>Overall: ${data["rating"]}</span>
+        <p>${data["content"]}</p>
+      </div>
+      `)
   }).error(error => {
-      alert('suh')
+      debugger;
+      $('#beer_misc').load(`/beers/${beerId}/reviews/new #review_form`).data('beer_id', `${beerId}`)
   });
 };
-
