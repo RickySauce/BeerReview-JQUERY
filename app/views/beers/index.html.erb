@@ -10,7 +10,7 @@
   <button type="button" name="button" onclick="showAll()">Show All</button>
 </div>
 
-<span data-user_id="<%=current_user.id%>"></span>
+<span data-user_id="<%=current_user.id if logged_in?%>"></span>
 
 <script type="text/javascript">
   hideBeers()
