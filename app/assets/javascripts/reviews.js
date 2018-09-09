@@ -3,7 +3,7 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
 function newReview(){
-  $('#new_review form').submit(function(event){
+  $('form').submit(function(event){
     event.preventDefault();
     const formData = $(this).serialize();
     const beerId = $('#beer_misc').data('beer_id')
@@ -14,9 +14,9 @@ function newReview(){
           $(`#${error}_errors`).text(`ERROR(S): ${errors[error].join(', ')}`);
         };
         } else {
-        $('#new_user_display').load(`/users/${data["id"]} #profile`)
+          debugger;
         }
     });
   });
-      $('input').last()[0].removeAttribute('data-disable-with');
+      $('form input').last().removeAttr('data-disable-with')
 };

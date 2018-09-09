@@ -17,7 +17,8 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     @review.beer = @beer
     if @review.save
-      @review.rating=(@review.rating).save
+      @review.rating=(@review.rating)
+      @review.save
       redirect_to user_review_path(current_user, @review)
     else
       render :new
