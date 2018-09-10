@@ -39,7 +39,7 @@ RELATIONS:
 
   render :layout => false, returns JSON?
   how to require handlebars?
-  redirect to root_path in review_exists, help with respond_to formats 
+  redirect to root_path in review_exists, help with respond_to formats
 
 
 users/beers/:beer_id, to users#review_exists, as review?_path
@@ -51,4 +51,3 @@ format_do json |
     status: 500
 html
 redirect_to /
-

@@ -26,8 +26,8 @@ function beerOptions(element){
   $(element).append(`
     <div id="options">
       <button type="button" name="button" id="review">Review</button>
-      <button type="button" name="button">Go to profile</button>
-      <button type="button" name="button">Go to brewery profile</button>
+      <button type="button" name="button">Load profile</button>
+      <button type="button" name="button">Load brewery profile</button>
     </div>
     `)
     $('#review').click(() => review(element))
@@ -48,16 +48,16 @@ function review(element){
         <form class="new_review" id="new_review" action="/beers/2/reviews" accept-charset="UTF-8" method="post"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="pPlzF9x+DuvS2O/rN7WmGY0uJDiSSswom4rUQGne1pwQf2qoA/wiJmBw9Dnt6T5vjj2TUzDj0CTGIuiNXEhlWw==" type="hidden">
           <input type="hidden" name="review[beer_id]" id="review_beer_id" value="${beerId}">
           <b>Taste:</b>
-          <input step="0.1" name="review[taste]" id="review_taste" type="number">
+          <input step="0.1" name="review[taste]" id="review_taste" type="number"> <span id="taste_errors"></span>
           <br><br>
           <b>Look:</b>
-          <input step="0.1" name="review[look]" id="review_look" type="number">
+          <input step="0.1" name="review[look]" id="review_look" type="number"> <span id="look_errors"></span>
           <br><br>
           <b>Smell:</b>
-          <input step="0.1" name="review[smell]" id="review_smell" type="number">
+          <input step="0.1" name="review[smell]" id="review_smell" type="number"> <span id="smell_errors"></span>
           <br><br>
           <b>Feel:</b>
-          <input step="0.1" name="review[feel]" id="review_feel" type="number">
+          <input step="0.1" name="review[feel]" id="review_feel" type="number"> <span id="feel_errors"></span>
           <br><br>
           <br><br>
           <b>Post:</b><br>
@@ -65,5 +65,6 @@ function review(element){
           <input name="commit" value="Submit Review" class="buttons" data-disable-with="Submit Review" type="submit">
         </form>
         `)
+        newReview(beerId, element)
   });
 };

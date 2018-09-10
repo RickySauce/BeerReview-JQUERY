@@ -21,9 +21,9 @@ class ReviewsController < ApplicationController
     if @review.save
       @review.rating=(@review.rating)
       @review.save
-      redirect_to user_review_path(current_user, @review)
+      render :json => @review, status: 201
     else
-      render :new
+       render :json => { :errors => @review.errors}
     end
   end
 
