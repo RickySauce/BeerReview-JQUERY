@@ -12,4 +12,12 @@ class Brewery < ApplicationRecord
     @rating.round(2)
   end
 
+  def top_reviews
+    reviews = self.reviews.order(rating: :desc)
+    reviews = reviews.collect do |review|
+      review if !review.content.blank?
+    end.delete_if {|review| review.nil?}
+    reviews
+  end
+
 end

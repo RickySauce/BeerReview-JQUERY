@@ -1,0 +1,27 @@
+<div id="brewery_profile">
+  <h3><%=@brewery.name%></h3>
+  <h3>Overall Rating: <%=@brewery.rating%></h3>
+
+  <b>Beers: </b> <br>
+  <ul>
+    <%@brewery.beers.each do |beer|%>
+    <li> <a href="beers/<%=beer.id%>"><%=beer.name%></a> - reviews: <%=beer.reviews.count%> - rating: <%=beer.rating%></li>
+    <%end%>
+  </ul>
+
+  <b>Top Reviews: </b>
+  <br><br>
+  <%@brewery.top_reviews.each do |review|%>
+  <%=link_to review.user.username, user_path(review.user)%>'s <%=link_to 'Post', user_review_path(review.user, review)%>:
+  <br>
+  <div>
+    <span>Taste: <%=review.taste%></span><span> Smell: <%=review.smell%></span> <span> Feel: <%=review.feel%></span> <span> Look: <%=review.look%></span>
+    <br><br>
+    <b>Overall Rating:</b><span> <%=review.rating%></span>
+    <br><br>
+    <b>Post:</b>
+    <%=review.content%>
+    <br><br>
+  </div>
+  <%end%>
+</div>

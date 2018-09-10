@@ -37,7 +37,7 @@ function beerOptions(element){
 }
 
 function beerProfile(beerId){
-  $('#beer_misc').load(`/beers/${beerId}`)
+  $('#beer_misc').load(`/beers/${beerId} #beer_profile`)
 }
 
 function review(beerId){
