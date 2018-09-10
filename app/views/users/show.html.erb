@@ -1,12 +1,20 @@
-<div id="profile">
+<div data-id="<%=@user.id%>" id="profile">
   <h2><%=@user.username.capitalize%>'s Profile</h2>
-  <div id="breweries">
-    <b>Number of Breweries:</b> <%=@user.breweries.count%>
+  <div>
+    <b>Number of Breweries:</b> <%=@user.breweries.count%><br>
+    <a href="" onclick="showBreweries(event, this)">Show <%=@user.username%>'s Breweries</a>
+    <div id="breweries">
+      <br>
+    </div>
   </div>
+  <br><br>
   <div id="beers">
-    <b>Number of Beers:</b> <%=@user.beers.count%>
+    <b>Number of Beers:</b> <%=@user.beers.count%><br>
+    <a href="">Show <%=@user.username%>'s Beers</a>
   </div>
+  <br><br>
   <div id="reviews">
-    <b>Number of Reviews:</b> <%=@user.reviews.count%>
+    <b>Number of Reviews:</b> <%=@user.reviews.count%><br>
+    <a href="">Show <%=@user.username%>'s Reviews</a>
   </div>
 </div>

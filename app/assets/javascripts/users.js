@@ -21,3 +21,16 @@ function newUser(){
     });
     $('input').last()[0].removeAttribute('data-disable-with');
 }
+
+function showBreweries(event, element){
+  event.preventDefault()
+  const userId = $('[id]').data('id')
+  $.get(`/users/${userId}/beers`).done( data => {
+    data["breweries"].forEach(element => {
+      $('#breweries').append(`
+        <a href="/breweries/${element["id"]}">${element["name"]}</a> <b>Rating:</b> ${element.rating}<br>
+        `)
+    });
+    console.log(element)
+  });
+};
