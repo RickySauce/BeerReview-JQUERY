@@ -62,7 +62,7 @@ function showReviews(event, element){
         <br><br>
         <b>Post:</b>
         <br><br>
-        ${element['content']}
+        ${element['content'] == false ? 'No Content' : element['content']}
         <br><br>
         `);
     });
