@@ -22,6 +22,7 @@ function showAll(){
 
 function beerOptions(element){
   const beerId = element.dataset.id
+  const breweryId = element.dataset.brewery_id
   userId = $('[data-user_id]').data("user_id")
   $('#options').remove()
   $(element).append(`
@@ -33,9 +34,12 @@ function beerOptions(element){
     `)
     $('#review').click(() => review(beerId))
     $('#beer_profile').click(() => beerProfile(beerId))
-
+    $('#brewery_profile').click(() => breweryProfile(breweryId))
 }
 
+function breweryProfile(breweryId){
+  $('#beer_misc').load(`/breweries/${breweryId} #brewery_profile`)
+}
 function beerProfile(beerId){
   $('#beer_misc').load(`/beers/${beerId} #beer_profile`)
 }
