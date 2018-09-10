@@ -15,7 +15,7 @@ function newUser(){
           $(`#${error}_errors`).text(`ERROR(S): ${errors[error].join(', ')}`);
         };
         } else {
-        $('#new_user_display').load(`/users/${data["id"]} #profile`)
+        history.pushState(`/users/${data["id"]}`)
         }
       });
     });
@@ -51,14 +51,11 @@ function showReviews(event, element){
   event.preventDefault();
   let userName = element.dataset.name;
   let userId = $('[id]').data('id');
-  $.get(`/users/${userId}/beers`).done( data => {
-    data['reviews'].forEach(element => {
-      $.get(`/beers/${element['beer_id']}`).done( beerData => {
-        const beerName = beerData["name"]
-      });
-      debugger;
+  $.get(`/users/${userId}/reviews`).done( data => {
+    data.forEach(element => {
+      console.log(element)
       $('#reviews').append(`
-        <h4> ${beerName} </h4>
+        <h4> ${element["beer"]["name"]} </h4>
         <span>Taste: ${element['taste']}</span><span> Smell: ${element['smell']}</span> <span> Feel: ${element['feel']}</span> <span> Look: ${element['look']}</span>
         <br><br>
         <b>Overall Rating:</b><span> ${element['rating']}</span>

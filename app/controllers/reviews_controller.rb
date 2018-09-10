@@ -1,6 +1,12 @@
 class ReviewsController < ApplicationController
   before_action :require_logged_in, only: [:new, :create]
 
+  def index
+    @user = User.find(params["user_id"])
+    @reviews = @user.reviews
+    render json: @reviews
+  end
+
   def new
     @review = Review.new
     @beer = Beer.find(params["beer_id"])
@@ -26,8 +32,9 @@ class ReviewsController < ApplicationController
        render :json => { :errors => @review.errors}
     end
   end
-
 end
+
+
 
 private
 

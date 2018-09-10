@@ -12,7 +12,7 @@ class Scraper
     doc.css("table tr").drop(2).each do |beer_info|
         beer = {
           :name => beer_info.css("td a b").text,
-          :abv => beer_info.css("div#extendedInfo").text.split("/ ").last.gsub("% ABV","").to_f
+          # :abv => beer_info.css("div#extendedInfo").text.split("/ ").last.gsub("% ABV","").to_f
         }
         brewery = {
           :name => beer_info.css("td a")[1].text

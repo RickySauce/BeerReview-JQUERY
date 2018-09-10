@@ -1,7 +1,6 @@
 <div id="beer_profile">
   <h3><%=@beer.name%></h3>
   <h5>Overall Rating: <%=@beer.rating%></h5>
-  <h5>ABV: <%=@beer.abv%>%</h5>
   <b>Reviews:</b>
   <ul>
     <%@beer.reviews.each do |review|%>
