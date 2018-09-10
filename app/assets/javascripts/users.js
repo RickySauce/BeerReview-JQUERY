@@ -22,15 +22,27 @@ function newUser(){
     $('input').last()[0].removeAttribute('data-disable-with');
 }
 
-function showBreweries(event, element){
-  event.preventDefault()
-  const userId = $('[id]').data('id')
+function userShow(event, element){
+  event.preventDefault();
+  let section = element.dataset.section;
+  let userName = element.dataset.name;
+  let userId = $('[id]').data('id');
   $.get(`/users/${userId}/beers`).done( data => {
-    data["breweries"].forEach(element => {
-      $('#breweries').append(`
-        <a href="/breweries/${element["id"]}">${element["name"]}</a> <b>Rating:</b> ${element.rating}<br>
-        `)
+    data[`${section}`].forEach(element => {
+      $(`#${section}`).append(`
+        <a href="/${section}/${element["id"]}">${element["name"]}</a> <b>Rating:</b> ${element.rating}<br>
+        `);
     });
-    console.log(element)
+    element.setAttribute('onclick', 'userHide(event, this)')
+    element.innerHTML = `Hide ${userName} ${section}`
   });
+};
+
+function userHide(event, element){
+  let userName = element.dataset.name;
+  let section = element.dataset.section;
+  event.preventDefault();
+  $(`#${section}`).empty();
+  element.setAttribute('onclick', 'userShow(event, this)');
+  element.innerHTML = `Show ${userName} ${section}`;
 };

@@ -2,15 +2,17 @@
   <h2><%=@user.username.capitalize%>'s Profile</h2>
   <div>
     <b>Number of Breweries:</b> <%=@user.breweries.count%><br>
-    <a href="" onclick="showBreweries(event, this)">Show <%=@user.username%>'s Breweries</a>
+    <a href="" data-name="<%=@user.username%>" data-section="breweries" onclick="userShow(event, this)">Show <%=@user.username%>'s breweries</a><br>
     <div id="breweries">
-      <br>
     </div>
   </div>
   <br><br>
-  <div id="beers">
+  <div>
     <b>Number of Beers:</b> <%=@user.beers.count%><br>
-    <a href="">Show <%=@user.username%>'s Beers</a>
+      <a href="" data-name="<%=@user.username%>" data-section="beers" onclick="userShow(event, this)">Show <%=@user.username%>'s beers</a><br>
+      <div id="beers">
+
+      </div>
   </div>
   <br><br>
   <div id="reviews">
