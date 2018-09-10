@@ -21,20 +21,26 @@ function showAll(){
 }
 
 function beerOptions(element){
+  const beerId = element.dataset.id
   userId = $('[data-user_id]').data("user_id")
   $('#options').remove()
   $(element).append(`
     <div id="options">
       <button type="button" name="button" id="review">Review</button>
-      <button type="button" name="button">Load profile</button>
-      <button type="button" name="button">Load brewery profile</button>
+      <button type="button" name="button" id="beer_profile">Load beer profile</button>
+      <button type="button" name="button" id="brewery_profile">Load brewery profile</button>
     </div>
     `)
-    $('#review').click(() => review(element))
+    $('#review').click(() => review(beerId))
+    $('#beer_profile').click(() => beerProfile(beerId))
+
 }
 
-function review(element){
-  let beerId = element.dataset.id
+function beerProfile(beerId){
+  $('#beer_misc').load(`/beers/${beerId}`)
+}
+
+function review(beerId){
   $.get(`/users/beers/${beerId}`).done(data => {
     $('#review').replaceWith(`
       <div class="">
@@ -65,6 +71,6 @@ function review(element){
           <input name="commit" value="Submit Review" class="buttons" data-disable-with="Submit Review" type="submit">
         </form>
         `)
-        newReview(beerId, element)
+        newReview(beerId)
   });
 };

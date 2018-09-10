@@ -5,7 +5,7 @@ class BeersController < ApplicationController
   end
 
   def show
-    binding.pry
+    @beer = Beer.find(params["id"])
   end
 
 end

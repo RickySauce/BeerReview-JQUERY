@@ -1,0 +1,22 @@
+<div id="beer_profile">
+  <h3><%=@beer.name%></h3>
+  <h5>Overall Rating: <%=@beer.rating%></h5>
+  <h5>ABV: <%=@beer.abv%>%</h5>
+  <b>Reviews:</b>
+  <ul>
+    <%@beer.reviews.each do |review|%>
+      <li>
+        <b>user:</b> <%=review.user.username%> <br>
+        <b>taste:</b> <%=review.taste %><br>
+        <b>feel:</b> <%=review.feel%><br>
+        <b>smell:</b> <%=review.smell %><br>
+        <b>look:</b> <%=review.look %><br>
+        <b>overall rating:</b> <%=review.rating %>
+        <br><br>
+        <b>Post:</b>
+        <%=review.content%>
+        <br><br>
+      </li>
+    <%end%>
+  </ul>
+</div>
