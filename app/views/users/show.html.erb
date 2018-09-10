@@ -15,8 +15,11 @@
       </div>
   </div>
   <br><br>
-  <div id="reviews">
+  <div >
     <b>Number of Reviews:</b> <%=@user.reviews.count%><br>
-    <a href="">Show <%=@user.username%>'s Reviews</a>
+    <a href="" data-name="<%=@user.username%>" onclick="showReviews(event, this)">Show <%=@user.username%>'s reviews</a><br>
+    <div id="reviews">
+
+    </div>
   </div>
 </div>

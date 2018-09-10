@@ -10,6 +10,10 @@ class BeersController < ApplicationController
 
   def show
     @beer = Beer.find(params["id"])
+    respond_to do |format|
+      format.json {render json: @beer}
+      format.html {render :show}
+    end
   end
 
 end
