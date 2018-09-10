@@ -11,8 +11,8 @@ class Beer < ApplicationRecord
       @rating /= self.reviews.count
       @rating.round(2)
     else
-      @rating = nil
-    end 
+      @rating = 0
+    end
   end
 
 end

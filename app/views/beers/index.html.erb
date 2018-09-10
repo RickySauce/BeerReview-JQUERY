@@ -5,7 +5,7 @@
   <div id="beer_list" style="float: left; width: 300px; height:400px;">
     <ul>
       <%@beers.each do |beer|%>
-        <li data-id="<%=beer.id%>"data-abv="<%=beer.abv%>" data-brewery_id="<%=beer.brewery.id%>" id="beer-<%=beer.id%>"><a href="<%beer_path(beer)%>"><%=beer.name%></a></li>
+        <li data-id="<%=beer.id%>" data-brewery_id="<%=beer.brewery.id%>" id="beer-<%=beer.id%>"><a href="<%beer_path(beer)%>"><%=beer.name%></a></li>
       <%end%>
     </ul>
     <button type="button" name="button" onclick="next25()">Show More</button>
