@@ -6,7 +6,7 @@
   <ul>
     <%@beer.reviews.each do |review|%>
       <li>
-        <b>user:</b> <%=review.user.username%> <br>
+        <b>user:</b> <%=link_to review.user.username, user_path(review.user)%> <br>
         <b>taste:</b> <%=review.taste %><br>
         <b>feel:</b> <%=review.feel%><br>
         <b>smell:</b> <%=review.smell %><br>

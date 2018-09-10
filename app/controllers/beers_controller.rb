@@ -2,6 +2,10 @@ class BeersController < ApplicationController
 
   def index
     @beers = Beer.all
+    @user = User.find(params["user_id"]) if params["user_id"]
+    if @user
+      render json: @user
+    end
   end
 
   def show
