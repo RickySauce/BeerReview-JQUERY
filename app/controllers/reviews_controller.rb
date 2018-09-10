@@ -12,10 +12,12 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @beer = Beer.find(params["beer_id"])
     @review = Review.new(review_params)
     @review.user = current_user
-    @review.beer = @beer
+    if params["beer_id"]
+      @beer = Beer.find(params["beer_id"])
+      @review.beer = @beer
+    end
     if @review.save
       @review.rating=(@review.rating)
       @review.save
