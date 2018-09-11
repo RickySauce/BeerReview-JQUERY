@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
     def review_exists
-    @review = Review.find_review(current_user.id, params["id"]).first
+     current_user ? @review = Review.find_review(current_user.id, params["id"]).first : @review = nil
     if @review.blank?
       render json: @review, status: 403
     else
