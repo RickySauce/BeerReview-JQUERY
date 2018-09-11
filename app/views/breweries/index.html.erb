@@ -5,7 +5,7 @@
   <div id="brewery_list" style="float: left; width: 300px; height:400px;">
     <ul>
       <%@breweries.each do |brewery|%>
-        <li id="brewery-<%=brewery.id%>" data-id="<%=brewery.id%>" ><a href="<%brewery_path(brewery)%>"><%=brewery.name%></a></li>
+        <li id="brewery-<%=brewery.id%>" ><a href="<%brewery_path(brewery)%>" class="brewery_link" data-id="<%=brewery.id%>" data-name="<%=brewery.name%>"><%=brewery.name%></a></li>
       <%end%>
     </ul>
     <button type="button" name="button" onclick="next25()">Show More</button>
@@ -23,5 +23,8 @@
 <script type="text/javascript">
   hide()
   $(document).ready(function() {
+    showBeers()
   });
 </script>
+
+<button type="button" name="button" onclick="location.href = '/breweries/${id}';"></button>
