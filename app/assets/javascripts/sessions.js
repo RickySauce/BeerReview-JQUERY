@@ -12,7 +12,7 @@ function logIn(){
       $('p')[0] ? $('p')[0].innerHTML = data["errors"] : $('h2').after(`<p>${data["errors"]}</p><br>`);
       $('#login_username').val(data["user"]);
     } else {
-        history.pushState(`/users/${data["id"]}`)
+        window.location = `/users/${data["id"]}`
     }
     });
   });

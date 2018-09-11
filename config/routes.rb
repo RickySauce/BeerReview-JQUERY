@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :breweries, only: [:index]
   end
   resources :beers, only: [:show, :index] do
-    resources :reviews, except: [:destroy, :update]
+    resources :reviews, except: [:destroy, :edit, :update]
   end
   resources :breweries, only: [:show, :index] do
     resources :beers, only: [:show, :index]

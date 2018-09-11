@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :require_logged_in, only: [:new, :create]
+  before_action :require_logged_in, only: [:new, :create, :edit, :update]
 
   def index
     @user = User.find(params["user_id"])
@@ -36,6 +36,22 @@ class ReviewsController < ApplicationController
        render :json => { :errors => @review.errors}
     end
   end
+end
+
+def edit
+  @review = review.find_by(id: params[:id])
+  redirect_to root_path if @review.user != current_user
+end
+
+def update
+end
+
+def destroy
+  @review = Review.find_by(id: params["id"])
+  @review.destroy
+  flash[:message] = "Successfully deleted review."
+  binding.pry
+  redirect_to root_path
 end
 
 

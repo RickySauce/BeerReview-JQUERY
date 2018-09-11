@@ -15,7 +15,7 @@ function newUser(){
           $(`#${error}_errors`).text(`ERROR(S): ${errors[error].join(', ')}`);
         };
         } else {
-        history.pushState(`/users/${data["id"]}`)
+        window.location = `/users/${data["id"]}`
         }
       });
     });
