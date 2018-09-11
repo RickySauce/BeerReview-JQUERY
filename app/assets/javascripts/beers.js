@@ -41,7 +41,9 @@ function breweryProfile(breweryId){
   $('#beer_misc').load(`/breweries/${breweryId} #brewery_profile`)
 }
 function beerProfile(beerId){
-  $('#beer_misc').load(`/beers/${beerId} #beer_profile`)
+  $('#beer_misc').load(`/beers/${beerId} #beer_profile`, function(){
+    $('#review_link').attr('hidden', 'hidden')
+  });
 }
 
 function newReview(beerId){
