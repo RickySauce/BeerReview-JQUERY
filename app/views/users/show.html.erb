@@ -1,5 +1,6 @@
 <div data-id="<%=@user.id%>" id="profile">
   <h2><%=@user.username.capitalize%>'s Profile</h2>
+  <% if @user.id == current_user.id%>
   <form id="search" action="" method="post">
     <input type="text" name="" value="">
     <input type="submit" name="search" value="Search Beers"><br><br>
@@ -7,6 +8,7 @@
   <div id="search_results">
 
   </div>
+  <%end%>
   <div>
     <b>Number of Breweries:</b> <%=@user.breweries.count%><br>
     <a href="" data-name="<%=@user.username%>" data-section="breweries" onclick="userShow(event, this)">Show <%=@user.username%>'s breweries</a><br>

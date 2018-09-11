@@ -28,6 +28,7 @@ function userShow(event, element){
   let userName = element.dataset.name;
   let userId = $('[id]').data('id');
   $.get(`/users/${userId}/beers`).done( data => {
+    debugger;
     data[`${section}`].forEach(element => {
       $(`#${section}`).append(`
         <a href="/${section}/${element["id"]}">${element["name"]}</a> <b>Rating:</b> ${element.rating}<br>
@@ -53,7 +54,6 @@ function showReviews(event, element){
   let userId = $('[id]').data('id');
   $.get(`/users/${userId}/reviews`).done( data => {
     data.forEach(element => {
-      console.log(element)
       $('#reviews').append(`
         <h4> ${element["beer"]["name"]} </h4>
         <span>Taste: ${element['taste']}</span><span> Smell: ${element['smell']}</span> <span> Feel: ${element['feel']}</span> <span> Look: ${element['look']}</span>

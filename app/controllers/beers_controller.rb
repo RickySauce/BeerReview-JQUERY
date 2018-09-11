@@ -1,14 +1,11 @@
 class BeersController < ApplicationController
 
   def index
-    @beers = Beer.all
     @user = User.find(params["user_id"]) if params["user_id"]
+    @user == true ? @beers = @user.beers : @beers = Beer.all
     respond_to do |format|
       format.json {render json: @beers}
       format.html {render :index}
-    end
-    if @user
-      render json: @user
     end
   end
 
