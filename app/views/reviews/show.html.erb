@@ -1,0 +1,2 @@
+<%=link_to @review.user.username, user_path(@review.user)%>'s Post: <br>
+<%= render partial: "review", locals: {review: @review} %>

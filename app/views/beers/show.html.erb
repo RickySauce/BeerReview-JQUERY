@@ -4,18 +4,8 @@
   <b>Reviews:</b>
   <ul>
     <%@beer.reviews.each do |review|%>
-      <li>
-        <b>user:</b> <%=link_to review.user.username, user_path(review.user)%> <br>
-        <b>taste:</b> <%=review.taste %><br>
-        <b>feel:</b> <%=review.feel%><br>
-        <b>smell:</b> <%=review.smell %><br>
-        <b>look:</b> <%=review.look %><br>
-        <b>overall rating:</b> <%=review.rating %>
-        <br><br>
-        <b>Post:</b>
-        <%=review.content%>
-        <br><br>
-      </li>
+      <b>user:</b> <%=link_to review.user.username, user_path(review.user)%> <br>
+      <%= render partial: "reviews/review", locals: {review: review} %>
     <%end%>
   </ul>
 </div>

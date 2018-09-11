@@ -34,7 +34,7 @@ function userShow(event, element){
         `);
     });
     element.setAttribute('onclick', 'userHide(event, this)')
-    element.innerHTML = `Hide ${userName} ${section}`
+    element.innerHTML = `Hide ${userName}'s ${section}`
   });
 };
 
@@ -44,7 +44,7 @@ function userHide(event, element){
   event.preventDefault();
   $(`#${section}`).empty();
   element.setAttribute('onclick', 'userShow(event, this)');
-  element.innerHTML = `Show ${userName} ${section}`;
+  element.innerHTML = `Show ${userName}'s ${section}`;
 };
 
 function showReviews(event, element){
@@ -67,7 +67,7 @@ function showReviews(event, element){
         `);
     });
     element.setAttribute('onclick', 'hideReviews(event, this)')
-    element.innerHTML = `Hide ${userName} reviews`
+    element.innerHTML = `Hide ${userName}'s reviews`
   });
 };
 
@@ -76,5 +76,5 @@ function hideReviews(event, element){
   event.preventDefault();
   $('#reviews').empty();
   element.setAttribute('onclick', 'showReviews(event, this)');
-  element.innerHTML = `Show ${userName} reviews`;
+  element.innerHTML = `Show ${userName}'s reviews`;
 }

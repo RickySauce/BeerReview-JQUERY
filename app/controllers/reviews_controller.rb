@@ -7,6 +7,10 @@ class ReviewsController < ApplicationController
     render json: @reviews
   end
 
+  def show
+    @review = Review.find(params["id"])
+  end
+
   def new
     @review = Review.new
     @beer = Beer.find(params["beer_id"])
