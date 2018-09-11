@@ -1,10 +1,9 @@
 <div id="edit_review">
   <h2>Edit Review</h2>
-  <%binding.pry%>
   <h4><%=@review.beer.name%></h4>
-  <%= form_for @review do |f| %>
+  <%= form_for [@user, @review] do |f| %>
   <%=f.hidden_field :user_id%>
-  <%=f.hiden_field :beer_id%>
+  <%=f.hidden_field :beer_id%>
   <b>Taste:</b>
   <%=f.number_field :taste, step: 0.1%> <span id="taste_errors"></span>
   <br><br>

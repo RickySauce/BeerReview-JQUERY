@@ -19,6 +19,22 @@ class ReviewsController < ApplicationController
     redirect_to root_path
   end
 
+  def edit
+    @review = Review.find_by(id: params["id"])
+    @user = current_user
+    redirect_to root_path if @review.user != current_user
+  end
+
+  def update
+    @review = Review.find_by(id: params["id"])
+    @user = current_user
+    if @review.update(review_params)
+      redirect_to user_review_path(@user, @review)
+    else
+      render :edit
+    end
+  end
+
   def new
     @review = Review.new
     @beer = Beer.find(params["beer_id"])
@@ -46,18 +62,6 @@ class ReviewsController < ApplicationController
   end
 end
 
-def edit
-  @review = review.find_by(id: params[:id])
-  redirect_to root_path if @review.user != current_user
-end
-
-def update
-end
-
-
-
-
-
 private
 
 def review_params
@@ -67,6 +71,7 @@ def review_params
      :feel,
      :smell,
      :beer_id,
+     :user_id,
      :content
    )
  end
