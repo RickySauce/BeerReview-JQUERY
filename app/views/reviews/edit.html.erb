@@ -1,5 +1,6 @@
 <div id="edit_review">
   <h2>Edit Review</h2>
+  <%binding.pry%>
   <h4><%=@review.beer.name%></h4>
   <%= form_for @review do |f| %>
   <%=f.hidden_field :user_id%>

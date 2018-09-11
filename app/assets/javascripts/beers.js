@@ -22,6 +22,7 @@ function showAll(){
 
 function beerOptions(element){
   const beerId = element.dataset.id
+  const beerName = element.dataset.name
   const breweryId = element.dataset.brewery_id
   userId = $('[data-user_id]').data("user_id")
   $('#options').remove()
@@ -32,7 +33,7 @@ function beerOptions(element){
       <button type="button" name="button" id="brewery_profile">Load brewery profile</button>
     </div>
     `)
-    $('#review').click(() => review(beerId))
+    $('#review').click(() => review(beerId, beerName))
     $('#beer_profile').click(() => beerProfile(beerId))
     $('#brewery_profile').click(() => breweryProfile(breweryId))
 }
@@ -74,7 +75,11 @@ function newBeerReview(beerId){
     });
 };
 
-function review(beerId){
+function editReview(reviewId){
+  $.get('/')
+}
+
+function review(beerId, beerName){
   $.get(`/users/beers/${beerId}`).done(data => {
     $('#review').replaceWith(`
       <div class="">
@@ -83,6 +88,9 @@ function review(beerId){
         <p>${data["content"]}</p>
       </div>
       `)
+      // const reviewId = data["id"]
+      // $('#review').replaceWith(`<button type="button" name="button" id="edit_review" data-reivew_id="${reviewId}">Edit Review</button>`)
+      // $('#edit_review').click(() => editReview(reviewId))
   }).error(error => {
     if (userId == false) {
       $('#beer_misc').html(`
@@ -90,7 +98,8 @@ function review(beerId){
         `);
     } else {
       $('#beer_misc').html(`
-        <form class="new_review" id="new_review" action="/beers/2/reviews" accept-charset="UTF-8" method="post"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="pPlzF9x+DuvS2O/rN7WmGY0uJDiSSswom4rUQGne1pwQf2qoA/wiJmBw9Dnt6T5vjj2TUzDj0CTGIuiNXEhlWw==" type="hidden">
+        <h3>${beerName}</h3>
+        <form class="new_review" id="new_review" action="/beers/${beerId}/reviews" accept-charset="UTF-8" method="post"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="pPlzF9x+DuvS2O/rN7WmGY0uJDiSSswom4rUQGne1pwQf2qoA/wiJmBw9Dnt6T5vjj2TUzDj0CTGIuiNXEhlWw==" type="hidden">
           <input type="hidden" name="review[beer_id]" id="review_beer_id" value="${beerId}">
           <b>Taste:</b>
           <input step="0.1" name="review[taste]" id="review_taste" type="number"> <span id="taste_errors"></span>

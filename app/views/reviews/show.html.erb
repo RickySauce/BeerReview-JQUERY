@@ -1,4 +1,13 @@
 <div id="review_page">
   <%=link_to @review.user.username, user_path(@review.user)%>'s Post: <br>
   <%= render partial: "review", locals: {review: @review} %>
+  <%if logged_in? && current_user == @review.user%>
+    <form class="" action="/users/<%=current_user.id%>/reviews/<%=@review.id%>" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" name="delete" value="Delete Review"><br><br>
+    </form>
+    <form class="" action="/users/<%=current_user.id%>/reviews/<%=@review.id%>/edit" method="get">
+      <input type="submit" name="edit" value="Edit Review">
+    </form>
+  <%end%>
 </div>

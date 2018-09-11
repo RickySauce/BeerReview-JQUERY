@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :require_logged_in, only: [:new, :create, :edit, :update]
+  skip_before_action :verify_authenticity_token, only: [:destroy]
 
   def index
     @user = User.find(params["user_id"])
@@ -9,6 +10,13 @@ class ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params["id"])
+  end
+
+  def destroy
+    @review = Review.find_by(id: params["id"])
+    @review.destroy
+    flash[:message] = "Successfully deleted review."
+    redirect_to root_path
   end
 
   def new
@@ -46,13 +54,7 @@ end
 def update
 end
 
-def destroy
-  @review = Review.find_by(id: params["id"])
-  @review.destroy
-  flash[:message] = "Successfully deleted review."
-  binding.pry
-  redirect_to root_path
-end
+
 
 
 
