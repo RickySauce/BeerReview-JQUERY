@@ -78,3 +78,23 @@ function hideReviews(event, element){
   element.setAttribute('onclick', 'showReviews(event, this)');
   element.innerHTML = `Show ${userName}'s reviews`;
 }
+
+function search(){
+  $('#search').submit(function(event){
+    event.preventDefault()
+    const beerName = $('input').val();
+    $('#search_results').html('Please wait one moment...')
+    $.get('/beers', beerName).done(data => {
+     const beer = data.find(function(element){ return element["name"] === beerName})
+     debugger;
+     if (!beer == false){
+       $('#search_results').html(`
+         Beer Found! <br>
+         <a href="/beers/${beer.id}/reviews/new">Write a review here!</a>
+         `)
+     } else {
+       $('#search_results').html('Beer not found. Please check your spelling, or enter a new name.')
+     }
+   });
+  });
+};

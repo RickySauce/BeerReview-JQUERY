@@ -5,7 +5,7 @@
   <b>Beers: </b> <br>
   <ul>
     <%@brewery.beers.each do |beer|%>
-    <li> <a href="beers/<%=beer.id%>"><%=beer.name%></a> - reviews: <%=beer.reviews.count%> - rating: <%=beer.rating%></li>
+    <li> <%=link_to beer.name, beer_path(beer)%> - reviews: <%=beer.reviews.count%> - rating: <%=beer.rating%></li>
     <%end%>
   </ul>
 
