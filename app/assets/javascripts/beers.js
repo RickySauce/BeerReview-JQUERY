@@ -44,6 +44,35 @@ function beerProfile(beerId){
   $('#beer_misc').load(`/beers/${beerId} #beer_profile`)
 }
 
+function newReview(beerId){
+  $('#new_review').submit(function(event){
+    event.preventDefault();
+    const formData = $(this).serialize();
+    // const beerId = $('#beer_misc').data('beer_id')
+    const posting = $.post(`/beers/${beerId}/reviews`, formData);
+    posting.done(data => {
+      const errors = data["errors"]
+      if (errors){
+        for (error in errors) {
+          $(`#${error}_errors`).text(`ERROR(S): ${errors[error].join(', ')}`);
+        };
+        } else {
+          $('#beer_misc').html(`
+            <p>Review Submitted!</p>
+            `)
+            $('#review').replaceWith(`
+              <div class="">
+                <span>Taste: ${data["taste"]} </span>Smell: ${data["smell"]} <span>Look: ${data["look"]} </span>
+                <span>Feel: ${data["feel"]} </span> <span>Overall: ${data["rating"]}</span>
+                <p>${data["content"]}</p>
+              </div>
+              `)
+        }
+      });
+    });
+      $('form input').last().removeAttr('data-disable-with')
+};
+
 function review(beerId){
   $.get(`/users/beers/${beerId}`).done(data => {
     $('#review').replaceWith(`
@@ -54,6 +83,11 @@ function review(beerId){
       </div>
       `)
   }).error(error => {
+    if (userId == false) {
+      $('#beer_misc').html(`
+        Not signed in! Log in <a href="/login">here</a>, or sign up <a href="/users/new">here</a>
+        `);
+    } else {
       $('#beer_misc').html(`
         <form class="new_review" id="new_review" action="/beers/2/reviews" accept-charset="UTF-8" method="post"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="pPlzF9x+DuvS2O/rN7WmGY0uJDiSSswom4rUQGne1pwQf2qoA/wiJmBw9Dnt6T5vjj2TUzDj0CTGIuiNXEhlWw==" type="hidden">
           <input type="hidden" name="review[beer_id]" id="review_beer_id" value="${beerId}">
@@ -76,5 +110,6 @@ function review(beerId){
         </form>
         `)
         newReview(beerId)
+      };
   });
 };
