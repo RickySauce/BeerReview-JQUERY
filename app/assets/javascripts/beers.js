@@ -46,11 +46,11 @@ function beerProfile(beerId){
   });
 }
 
-function newReview(beerId){
+function newBeerReview(beerId){
   $('#new_review').submit(function(event){
     event.preventDefault();
+    $('span').text("")
     const formData = $(this).serialize();
-    // const beerId = $('#beer_misc').data('beer_id')
     const posting = $.post(`/beers/${beerId}/reviews`, formData);
     posting.done(data => {
       const errors = data["errors"]
@@ -72,7 +72,6 @@ function newReview(beerId){
         }
       });
     });
-      $('form input').last().removeAttr('data-disable-with')
 };
 
 function review(beerId){
@@ -108,10 +107,10 @@ function review(beerId){
           <br><br>
           <b>Post:</b><br>
           <textarea name="review[content]" id="review_content" cols="100" rows="20"></textarea>
-          <input name="commit" value="Submit Review" class="buttons" data-disable-with="Submit Review" type="submit">
+          <input name="commit" value="Submit Review" class="buttons" type="submit">
         </form>
         `)
-        newReview(beerId)
+        newBeerReview(beerId)
       };
   });
 };

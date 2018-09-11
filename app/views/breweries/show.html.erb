@@ -1,6 +1,6 @@
 <div id="brewery_profile">
   <h3><%=@brewery.name%></h3>
-  <h3>Overall Rating: <%=@brewery.rating%></h3>
+  <h3>Overall Rating: <%=@brewery.rating == 0 ? "Not enough data" : @brewery.rating%></h5><br>
 
   <b>Beers: </b> <br>
   <ul>

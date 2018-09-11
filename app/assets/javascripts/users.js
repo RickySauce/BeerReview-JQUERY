@@ -4,8 +4,8 @@
 
 function newUser(){
   $('#new_user').submit(function(event){
-      $('span').text("")
       event.preventDefault();
+      $('span').text("")
       const formData = $(this).serialize();
       const posting = $.post('/users', formData);
       posting.done(data => {
