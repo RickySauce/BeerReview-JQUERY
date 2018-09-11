@@ -1,17 +1,17 @@
 // # Place all the behaviors and hooks related to the matching controller here.
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
-let beerIds = 25
+let Ids = 25
 let userId = null
 
-function hideBeers(){
+function hide(){
   $('li').slice(25).each(function(index,value){
     $(value).hide()
   });
 }
 
 function next25(){
-  $('li').slice(beerIds, beerIds += 25).each(function(index,value){
+  $('li').slice(Ids, Ids += 25).each(function(index,value){
     $(value).show()
   })
 }
