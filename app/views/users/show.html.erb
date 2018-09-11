@@ -11,14 +11,14 @@
   <%end%>
   <div>
     <b>Number of Breweries:</b> <%=@user.breweries.count%><br>
-    <a href="" data-name="<%=@user.username%>" data-section="breweries" onclick="userShow(event, this)">Show <%=@user.username%>'s breweries</a><br>
+    <a href="" data-name="<%=@user.username%>" data-section="breweries" onclick="userShowBreweries(event, this)">Show <%=@user.username%>'s breweries</a><br><br>
     <div id="breweries">
     </div>
   </div>
   <br><br>
   <div>
     <b>Number of Beers:</b> <%=@user.beers.count%><br>
-      <a href="" data-name="<%=@user.username%>" data-section="beers" onclick="userShow(event, this)">Show <%=@user.username%>'s beers</a><br>
+      <a href="" data-name="<%=@user.username%>" data-section="beers" onclick="userShowBeers(event, this)">Show <%=@user.username%>'s beers</a><br><br>
       <div id="beers">
 
       </div>
@@ -26,7 +26,7 @@
   <br><br>
   <div >
     <b>Number of Reviews:</b> <%=@user.reviews.count%><br>
-    <a href="" data-name="<%=@user.username%>" onclick="showReviews(event, this)">Show <%=@user.username%>'s reviews</a><br>
+    <a href="" data-name="<%=@user.username%>" onclick="showReviews(event, this)">Show <%=@user.username%>'s reviews</a><br><br>
     <div id="reviews">
 
     </div>

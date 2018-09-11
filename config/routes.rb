@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :reviews, except: [:new, :create]
     resources :beers, only: [:index]
+    resources :breweries, only: [:index]
   end
   resources :beers, only: [:show, :index] do
     resources :reviews, except: [:destroy, :update]

@@ -22,30 +22,50 @@ function newUser(){
     $('input').last()[0].removeAttribute('data-disable-with');
 }
 
-function userShow(event, element){
+function userShowBreweries(event, element){
   event.preventDefault();
-  let section = element.dataset.section;
   let userName = element.dataset.name;
   let userId = $('[id]').data('id');
-  $.get(`/users/${userId}/beers`).done( data => {
-    debugger;
-    data[`${section}`].forEach(element => {
-      $(`#${section}`).append(`
-        <a href="/${section}/${element["id"]}">${element["name"]}</a> <b>Rating:</b> ${element.rating}<br>
+  $.get(`/users/${userId}/breweries`).done( data => {
+    data.forEach(element => {
+      $(`#breweries`).append(`
+        <a href="/breweries/${element["id"]}">${element["name"]}</a> <b>Rating:</b> ${element.rating}<br>
         `);
     });
-    element.setAttribute('onclick', 'userHide(event, this)')
-    element.innerHTML = `Hide ${userName}'s ${section}`
+    element.setAttribute('onclick', 'userHideBreweries(event, this)')
+    element.innerHTML = `Hide ${userName}'s breweries`
   });
 };
 
-function userHide(event, element){
+function userHideBreweries(event, element){
   let userName = element.dataset.name;
-  let section = element.dataset.section;
   event.preventDefault();
-  $(`#${section}`).empty();
-  element.setAttribute('onclick', 'userShow(event, this)');
-  element.innerHTML = `Show ${userName}'s ${section}`;
+  $(`#breweries`).empty();
+  element.setAttribute('onclick', 'userShowBreweries(event, this)');
+  element.innerHTML = `Show ${userName}'s breweries`;
+};
+
+function userShowBeers(event, element){
+  event.preventDefault();
+  let userName = element.dataset.name;
+  let userId = $('[id]').data('id');
+  $.get(`/users/${userId}/beers`).done( data => {
+    data.forEach(element => {
+      $(`#beers`).append(`
+        <a href="/beers/${element["id"]}">${element["name"]}</a> <b>Rating:</b> ${element.rating}<br>
+        `);
+    });
+    element.setAttribute('onclick', 'userHideBeer(event, this)')
+    element.innerHTML = `Hide ${userName}'s beers`
+  });
+};
+
+function userHideBeers(event, element){
+  let userName = element.dataset.name;
+  event.preventDefault();
+  $(`#beers`).empty();
+  element.setAttribute('onclick', 'userShowBeers(event, this)');
+  element.innerHTML = `Show ${userName}'s beers`;
 };
 
 function showReviews(event, element){
