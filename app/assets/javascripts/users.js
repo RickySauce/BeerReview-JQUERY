@@ -118,3 +118,7 @@ function search(){
    });
   });
 };
+
+function removeNav(){
+  $('.topnav').remove()
+}
