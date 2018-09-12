@@ -1,53 +1,53 @@
--------- ACTIVE RECORD MODELS AND RELATIONS ----------------------
-MODELS:
-  -users
-  -beers
-  -breweries
-  -reviews
-MODEL ATTRIBUTES:
-    USERS:
-          - username : string
-          - password_digest : string
-          - email : string
-    Beers:
-          - brewery_id : integer
-          - name : string
-          - style : string
-          - description : string
-          - abv : float
-          - ibu : integer
-          - rating : float
-    Reviews:
-          - user_id : integer
-          - beer_id : integer
-          - look : float
-          - smell : float
-          - taste : float
-          - feel : float
-          - rating : float
-    Breweries:
-            - name : string
-            - location : string
-            - rating : float
-RELATIONS:
-    USERS: has-many reviews | has-many beers through reviews | has-many breweries through beers
-    BEERS: belongs to a brewery | has many reviews | has-many users through reviews
-    REVIEWS: belongs to a user | belongs to a beer
-    BREWERIES: has-many beers | has-many reviews through beers | has-many users through reviews
----------------------------------------------------------------------
-
-
-  render :layout => false, returns JSON?
-  how to require handlebars?
-  redirect to root_path in review_exists, help with respond_to formats
-
-
-users/beers/:beer_id, to users#review_exists, as review?_path
-
-format_do json |
-  if Review.find_review(current_user.id, beer_params.id).blank?
-    status: 200
-    else
-    status: 500
-html
-redirect_to /
+# -------- ACTIVE RECORD MODELS AND RELATIONS ----------------------
+# MODELS:
+#   -users
+#   -beers
+#   -breweries
+#   -reviews
+# MODEL ATTRIBUTES:
+#     USERS:
+#           - username : string
+#           - password_digest : string
+#           - email : string
+#     Beers:
+#           - brewery_id : integer
+#           - name : string
+#           - style : string
+#           - description : string
+#           - abv : float
+#           - ibu : integer
+#           - rating : float
+#     Reviews:
+#           - user_id : integer
+#           - beer_id : integer
+#           - look : float
+#           - smell : float
+#           - taste : float
+#           - feel : float
+#           - rating : float
+#     Breweries:
+#             - name : string
+#             - location : string
+#             - rating : float
+# RELATIONS:
+#     USERS: has-many reviews | has-many beers through reviews | has-many breweries through beers
+#     BEERS: belongs to a brewery | has many reviews | has-many users through reviews
+#     REVIEWS: belongs to a user | belongs to a beer
+#     BREWERIES: has-many beers | has-many reviews through beers | has-many users through reviews
+# ---------------------------------------------------------------------
+#
+#
+#   render :layout => false, returns JSON?
+#   how to require handlebars?
+#   redirect to root_path in review_exists, help with respond_to formats
+#
+#
+# users/beers/:beer_id, to users#review_exists, as review?_path
+#
+# format_do json |
+#   if Review.find_review(current_user.id, beer_params.id).blank?
+#     status: 200
+#     else
+#     status: 500
+# html
+# redirect_to /
