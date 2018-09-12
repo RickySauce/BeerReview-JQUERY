@@ -84,6 +84,7 @@ function showReviews(event, element){
         <br><br>
         ${element['content'] == false ? 'No Content' : element['content']}
         <br><br>
+        <a href="/users/${userId}/reviews/${element['id']}">Edit or Delete this Review here</a>
         `);
     });
     element.setAttribute('onclick', 'hideReviews(event, this)')

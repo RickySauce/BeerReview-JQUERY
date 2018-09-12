@@ -81,15 +81,15 @@ function editReview(reviewId){
 
 function review(beerId, beerName){
   $.get(`/users/beers/${beerId}`).done(data => {
-    $('#review').replaceWith(`
+    const reviewId = data["id"]
+    $('#review').before(`
       <div class="">
         <span>Taste: ${data["taste"]} </span>Smell: ${data["smell"]} <span>Look: ${data["look"]} </span>
         <span>Feel: ${data["feel"]} </span> <span>Overall: ${data["rating"]}</span>
         <p>${data["content"]}</p>
       </div>
       `)
-      // const reviewId = data["id"]
-      // $('#review').replaceWith(`<button type="button" name="button" id="edit_review" data-reivew_id="${reviewId}">Edit Review</button>`)
+      $('#review').replaceWith(`<button onclick="location.href='/users/${userId}/reviews/${reviewId}'">Edit or Delete this Review here</button>`)
       // $('#edit_review').click(() => editReview(reviewId))
   }).error(error => {
     if (userId == false) {

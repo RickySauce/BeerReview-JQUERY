@@ -23,7 +23,6 @@ function newReview(){
     $('input').last()[0].removeAttribute('data-disable-with');
 }
 
-
 // function newReview(event){
 //   event.preventDefault;
 //   const formData = $('form').serialize();
