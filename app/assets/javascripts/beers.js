@@ -28,12 +28,13 @@ function beerOptions(element){
   $('#options').remove()
   $(element).append(`
     <div id="options">
-      <button type="button" name="button" id="review">Review</button>
+      <div id="review"></div>
+      <button type="button" name="button" id="review_button">Review</button>
       <button type="button" name="button" id="beer_profile">Load beer profile</button>
       <button type="button" name="button" id="brewery_profile">Load brewery profile</button>
     </div>
     `)
-    $('#review').click(() => review(beerId, beerName))
+    $('#review_button').click(() => review(beerId, beerName))
     $('#beer_profile').click(() => beerProfile(beerId))
     $('#brewery_profile').click(() => breweryProfile(breweryId))
 }
@@ -63,33 +64,22 @@ function newBeerReview(beerId){
           $('#beer_misc').html(`
             <p>Review Submitted!</p>
             `)
-            $('#review').replaceWith(`
-              <div class="">
-                <span>Taste: ${data["taste"]} </span>Smell: ${data["smell"]} <span>Look: ${data["look"]} </span>
-                <span>Feel: ${data["feel"]} </span> <span>Overall: ${data["rating"]}</span>
-                <p>${data["content"]}</p>
-              </div>
-              `)
+            let review = new Review(data)
+            review.html('review')
         }
       });
     });
 };
 
-function editReview(reviewId){
-  $.get('/')
-}
+// function editReview(reviewId){
+//   $.get('/')
+// }
 
 function review(beerId, beerName){
   $.get(`/users/beers/${beerId}`).done(data => {
-    const reviewId = data["id"]
-    $('#review').before(`
-      <div class="">
-        <span>Taste: ${data["taste"]} </span>Smell: ${data["smell"]} <span>Look: ${data["look"]} </span>
-        <span>Feel: ${data["feel"]} </span> <span>Overall: ${data["rating"]}</span>
-        <p>${data["content"]}</p>
-      </div>
-      `)
-      $('#review').replaceWith(`<button onclick="location.href='/users/${userId}/reviews/${reviewId}'">Edit or Delete this Review here</button>`)
+    let review = new Review(data)
+    review.html('review')
+      $('#review_button').replaceWith(`<button onclick="location.href='/users/${review.user_id}/reviews/${review.id}'">Edit or Delete this Review here</button>`)
       // $('#edit_review').click(() => editReview(reviewId))
   }).error(error => {
     if (userId == false) {

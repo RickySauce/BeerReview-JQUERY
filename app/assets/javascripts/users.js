@@ -74,18 +74,8 @@ function showReviews(event, element){
   let userId = $('[id]').data('id');
   $.get(`/users/${userId}/reviews`).done( data => {
     data.forEach(element => {
-      $('#reviews').append(`
-        <h4> ${element["beer"]["name"]} </h4>
-        <span>Taste: ${element['taste']}</span><span> Smell: ${element['smell']}</span> <span> Feel: ${element['feel']}</span> <span> Look: ${element['look']}</span>
-        <br><br>
-        <b>Overall Rating:</b><span> ${element['rating']}</span>
-        <br><br>
-        <b>Post:</b>
-        <br><br>
-        ${element['content'] == false ? 'No Content' : element['content']}
-        <br><br>
-        <a href="/users/${userId}/reviews/${element['id']}">Edit or Delete this Review here</a>
-        `);
+      let review = new Review(element)
+      review.appendDom('reviews')
     });
     element.setAttribute('onclick', 'hideReviews(event, this)')
     element.innerHTML = `Hide ${userName}'s reviews`
